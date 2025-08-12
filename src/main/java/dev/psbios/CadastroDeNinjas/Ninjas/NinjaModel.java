@@ -1,6 +1,9 @@
-package dev.psbios.CadastroDeNinjas;
+package dev.psbios.CadastroDeNinjas.Ninjas;
 
+import dev.psbios.CadastroDeNinjas.Missoes.MissaoModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // @Entity transforma uma classe em uma entidade
 // JPA = Java Persistence API
@@ -14,6 +17,11 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+
+    // @ManyToOne = Um ninja só pode ter uma única missão.
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") // Foreign key (chave estrangeira)
+    private MissaoModel missoes;
 
     public NinjaModel() {
     }
