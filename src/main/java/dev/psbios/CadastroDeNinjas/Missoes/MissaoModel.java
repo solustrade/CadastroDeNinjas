@@ -2,11 +2,21 @@ package dev.psbios.CadastroDeNinjas.Missoes;
 
 import dev.psbios.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_missao")
+
+// Anotações do lombok, cria os contrutores, mas eles não são exibidos
+@NoArgsConstructor
+@AllArgsConstructor
+
+// lombok - @Data -  Cria os getters e setters.
+@Data
 public class MissaoModel {
 
     @Id
@@ -18,37 +28,5 @@ public class MissaoModel {
     // @OneToMany = Uma missão pode ser executada por vários ninjas.
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninja;
-
-    public MissaoModel() {
-    }
-
-    public MissaoModel(Long id, String nome, String dificuldade) {
-        this.id = id;
-        this.nome = nome;
-        this.dificuldade = dificuldade;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setDificuldade(String dificuldade) {
-        this.dificuldade = dificuldade;
-    }
+    
 }
